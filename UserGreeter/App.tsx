@@ -27,6 +27,8 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import Textbox from './components/Textbox';
+
 const Section: React.FC<{
   title: string;
 }> = ({children, title}) => {
@@ -55,7 +57,7 @@ const Section: React.FC<{
   );
 };
 
-const App = () => {
+const InitApp = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -110,6 +112,18 @@ const styles = StyleSheet.create({
   highlight: {
     fontWeight: '700',
   },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    backgroundColor: '#ecf0f1',
+    padding: 8,
+  }
 });
+
+const App = () => {
+  <View style={styles.container}>
+      <Textbox />
+    </View>
+}
 
 export default App;
