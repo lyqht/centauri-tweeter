@@ -1,1 +1,1 @@
-This repository contains project work submissions for Centauri React Native Cohort by Real Dev Squad.
+This repository contains project work submissions for [Centauri React Native Cohort by Real Dev Squad](https://github.com/Real-Dev-Squad/Centauri-React-Native-Cohort).

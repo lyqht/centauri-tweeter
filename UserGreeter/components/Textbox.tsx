@@ -1,26 +1,34 @@
-import * as React from 'react';
-import { Text, TextInput, View, StyleSheet } from 'react-native';
+import * as React from "react";
+import { Text, TextInput, View, StyleSheet } from "react-native";
 
 const Textbox = () => {
   const maxLimit = 10;
-  const [text, onChangeText] = React.useState('');
-  const [color, onChangeColor] = React.useState('black');
-  const [backgroundColor, onChangeBgColor] = React.useState('');
+  const [text, onChangeText] = React.useState("");
+  const [color, onChangeColor] = React.useState("black");
+  const [backgroundColor, onChangeBgColor] = React.useState("rgba(0,0,0,0)");
 
   const getRemainingChars = () => maxLimit - text.length;
 
   React.useEffect(() => {
     if (getRemainingChars() < 10 && getRemainingChars() > 0) {
-      onChangeColor('#c4b56d');
-      onChangeBgColor('rgba(255, 221, 50, 0.1)');
+      onChangeColor("#c4b56d");
+      onChangeBgColor("rgba(255, 221, 50, 0.1)");
     } else if (getRemainingChars() <= 0) {
-      onChangeColor('red');
-      onChangeBgColor('rgba(255,0,0,0.1)');
+      onChangeColor("red");
+      onChangeBgColor("rgba(255,0,0,0.1)");
     } else {
-      onChangeColor('black');
-      onChangeBgColor('rgba(0,0,0,0)');
+      onChangeColor("black");
+      onChangeBgColor("rgba(0,0,0,0)");
     }
   }, [text]);
+
+  const textContainerStyle = StyleSheet.flatten([
+    styles.textContainer,
+    {
+      borderColor: color,
+      backgroundColor,
+    },
+  ]);
 
   return (
     <View style={styles.container}>
@@ -28,11 +36,7 @@ const Textbox = () => {
         multiline={true}
         onChangeText={onChangeText}
         value={text}
-        style={{
-          ...styles.textContainer,
-          borderColor: color,
-          backgroundColor: backgroundColor,
-        }}
+        style={textContainerStyle}
         placeholder="type something here"
       />
       <Text style={{ color }}>{getRemainingChars()} characters remaining</Text>
@@ -42,22 +46,22 @@ const Textbox = () => {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     padding: 24,
     margin: 24,
     marginTop: 0,
     fontSize: 14,
-    height: '50%',
+    height: "50%",
   },
   textContainer: {
     padding: 24,
-    textAlignVertical: 'top',
+    textAlignVertical: "top",
     borderWidth: 1,
-    borderColor: 'gray',
+    borderColor: "gray",
     borderRadius: 24,
-    height: '100%',
-    width: '100%',
+    height: "100%",
+    width: "100%",
   },
 });
 
