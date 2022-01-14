@@ -1,9 +1,10 @@
 import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import FlipperAsyncStorage from "rn-flipper-async-storage-advanced";
 import TweeterContext from "./context";
+import { useTweets } from "./hooks/useTweets";
 import { RootStackParamList } from "./routes";
 import HomeScreen from "./screens/HomeScreen";
 import TweetDetailScreen from "./screens/TweetDetailScreen";
@@ -23,15 +24,14 @@ const NavStack = () => (
 );
 
 const App: React.FC = () => {
-    const [tweets, setTweets] = useState([]);
+    const tweets = useTweets();
     const { getItem } = useAsyncStorage("tweets");
 
     const readItemFromStorage = async () => {
         const item = await getItem();
-        console.log({item})
         if (item != null) {
             const retrievedTweets = JSON.parse(item);
-            setTweets(retrievedTweets);
+            tweets.setCurrTweets(retrievedTweets);
         }
     };
 
@@ -40,7 +40,7 @@ const App: React.FC = () => {
     }, []);
 
     return (
-        <TweeterContext.Provider value={{tweets}}>
+        <TweeterContext.Provider value={tweets}>
             <FlipperAsyncStorage />
             <NavigationContainer>
                 <NavStack />

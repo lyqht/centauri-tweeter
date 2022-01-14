@@ -13,8 +13,7 @@ const TweetDetail: React.FC<TweetDetailProps> = ({text}) => (
 );
 
 const TweetDetailScreen: React.FC = () => {
-    const context = useContext(Context);
-    const { tweets } = context;
+    const { tweets } = useContext(Context);
 
     return (
         <SafeAreaView style={styles.container}>

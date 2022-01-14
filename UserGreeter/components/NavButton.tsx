@@ -15,7 +15,6 @@ const NavButton: React.FC<NavButtonProps> = ({ name, navigationRoute }) => {
         <TouchableOpacity
             style={styles.button}
             onPress={() => {
-                /* 1. Navigate to the Details route with params */
                 navigation.navigate(navigationRoute);
             }}
         >

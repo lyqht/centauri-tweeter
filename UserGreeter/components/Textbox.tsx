@@ -1,9 +1,13 @@
 import * as React from "react";
 import { Text, TextInput, View, StyleSheet } from "react-native";
 
-const Textbox = () => {
+type TextboxProps = {
+    text: string;
+    onChangeText: ((text: string) => void)
+}
+
+const Textbox: React.FC<TextboxProps> = ({text, onChangeText}) => {
     const maxLimit = 10;
-    const [text, onChangeText] = React.useState("");
     const [borderColor, onChangeBorderColor] = React.useState(colors.border.default);
     const [backgroundColor, onChangeBgColor] = React.useState(colors.background.default);
 
