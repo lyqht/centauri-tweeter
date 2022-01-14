@@ -7,7 +7,7 @@ module.exports = {
         "no-shadow": "off",
         "@typescript-eslint/no-shadow": ["error"],
         quotes: ["error", "double"],
-        indent: ["error", 4],
+        "@typescript-eslint/indent": ["error", 4],
         "prettier/prettier": 0,
     },
 };

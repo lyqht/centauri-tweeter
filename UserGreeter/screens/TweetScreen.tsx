@@ -2,7 +2,7 @@ import React from "react";
 import { SafeAreaView, StyleSheet } from "react-native";
 import Textbox from "../components/Textbox";
 
-const HomePage = () => {
+const TweetScreen: React.FC = () => {
     return (
         <SafeAreaView style={styles.container}>
             <Textbox />
@@ -19,4 +19,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default HomePage;
+export default TweetScreen;

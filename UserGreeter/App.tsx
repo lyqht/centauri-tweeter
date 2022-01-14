@@ -1,10 +1,27 @@
 import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
-import HomePage from "./pages/HomePage";
+import { RootStackParamList } from "./routes";
+import HomeScreen from "./screens/HomeScreen";
+import TweetDetailScreen from "./screens/TweetDetailScreen";
+import TweetScreen from "./screens/TweetScreen";
 
-const App = () => (
+const RootStack = createNativeStackNavigator<RootStackParamList>();
+
+const NavStack = () => (
+    <RootStack.Navigator initialRouteName="Home">
+        <RootStack.Screen name={"Home"} component={HomeScreen} />
+        <RootStack.Screen
+            name={"Tweet"}
+            component={TweetScreen}
+        />
+        <RootStack.Screen name={"TweetDetail"} component={TweetDetailScreen} />
+    </RootStack.Navigator>
+);
+
+const App: React.FC = () => (
     <NavigationContainer>
-        <HomePage />
+        <NavStack />
     </NavigationContainer>
 );
 
