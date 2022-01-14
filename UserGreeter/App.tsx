@@ -1,20 +1,11 @@
+import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
-import { SafeAreaView, StyleSheet } from "react-native";
-import Textbox from "./components/Textbox";
+import HomePage from "./pages/HomePage";
 
 const App = () => (
-  <SafeAreaView style={styles.container}>
-    <Textbox />
-  </SafeAreaView>
+    <NavigationContainer>
+        <HomePage />
+    </NavigationContainer>
 );
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    backgroundColor: "#ecf0f1",
-    padding: 8,
-  },
-});
 
 export default App;
