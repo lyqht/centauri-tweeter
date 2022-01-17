@@ -10,6 +10,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@klarna/react-native-vector-drawable": "^0.3.0",
     "@react-native-async-storage/async-storage": "^1.15.15",
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/native-stack": "^6.2.5",
@@ -20,6 +21,7 @@
     "react-native-get-random-values": "^1.7.2",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.10.1",
+    "react-native-vector-image": "^0.3.2",
     "rn-flipper-async-storage-advanced": "^1.0.4",
     "uuid": "^8.3.2"
   },
