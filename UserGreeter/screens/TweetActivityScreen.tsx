@@ -1,16 +1,13 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { useContext } from "react";
-import { SafeAreaView, StyleSheet, Text, View, ViewStyle } from "react-native";
+import { FlatList, SafeAreaView, StyleSheet, Text, View, ViewStyle } from "react-native";
+import Context, { Tweet } from "../context";
 import { RootStackParamList } from "../routes";
-import Context from "../context";
 
-type TweetDetailProps = {
-    text: string;
-}
-
-const TweetDetail: React.FC<TweetDetailProps> = ({text}) => (
+type TweetDetailProps = Pick<Tweet, "content">
+const TweetDetail: React.FC<TweetDetailProps> = ({content}) => (
     <View style={styles.tweetContainer}>
-        <Text>{text}</Text>
+        <Text>{content}</Text>
     </View>
 );
 
@@ -19,10 +16,15 @@ type TweetActivityScreenProps = NativeStackScreenProps<RootStackParamList, "Twee
 const TweetActivityScreen: React.FC<TweetActivityScreenProps> = () => {
     const { tweets } = useContext(Context);
 
+    const _renderListItem = ({ item }: {item: Tweet}) => (<TweetDetail key={item.id} content={item.content} />);
+
     return (
         <SafeAreaView style={styles.container}>
             <Text>Number of tweets made: {tweets.length}</Text>
-            {tweets.map((tweet, index) => <TweetDetail key={tweet.content + index} text={tweet.content} />)}
+            <FlatList
+                keyExtractor={item => item.id}
+                data={tweets}
+                renderItem={_renderListItem} />
         </SafeAreaView>
     );
 };
