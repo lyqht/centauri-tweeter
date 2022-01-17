@@ -10,9 +10,11 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@faker-js/faker": "^6.0.0-alpha.3",
     "@react-native-async-storage/async-storage": "^1.15.15",
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/native-stack": "^6.2.5",
+    "@types/faker": "^5.5.9",
     "@types/uuid": "^8.3.4",
     "react": "17.0.2",
     "react-native": "0.66.4",

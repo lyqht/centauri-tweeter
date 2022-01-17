@@ -1,17 +1,17 @@
 import * as React from "react";
-import { Text, TextInput, View, StyleSheet } from "react-native";
+import { StyleSheet, Text, TextInput, View } from "react-native";
 
 type TextboxProps = {
     text: string;
+    maxCharLimit: number;
     onChangeText: ((text: string) => void)
 }
 
-const Textbox: React.FC<TextboxProps> = ({text, onChangeText}) => {
-    const maxLimit = 10;
+const Textbox: React.FC<TextboxProps> = ({text, onChangeText, maxCharLimit}) => {
     const [borderColor, onChangeBorderColor] = React.useState(colors.border.default);
     const [backgroundColor, onChangeBgColor] = React.useState(colors.background.default);
 
-    const getRemainingChars = () => maxLimit - text.length;
+    const getRemainingChars = () => maxCharLimit - text.length;
 
     React.useEffect(() => {
         if (getRemainingChars() < 10 && getRemainingChars() > 0) {
