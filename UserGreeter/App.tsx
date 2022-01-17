@@ -7,6 +7,7 @@ import TweeterContext from "./context";
 import { useTweets } from "./hooks/useTweets";
 import { RootStackParamList } from "./routes";
 import HomeScreen from "./screens/HomeScreen";
+import TweetActivityScreen from "./screens/TweetActivityScreen";
 import TweetDetailScreen from "./screens/TweetDetailScreen";
 import TweetScreen from "./screens/TweetScreen";
 
@@ -19,6 +20,7 @@ const NavStack = () => (
             name={"Tweet"}
             component={TweetScreen}
         />
+        <RootStack.Screen name={"TweetActivity"} component={TweetActivityScreen} />
         <RootStack.Screen name={"TweetDetail"} component={TweetDetailScreen} />
     </RootStack.Navigator>
 );

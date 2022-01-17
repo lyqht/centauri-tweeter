@@ -6,7 +6,7 @@ const HomeScreen: React.FC = () => {
     return (
         <SafeAreaView style={styles.container}>
             <NavButton name={"Make a tweet"} navigationRoute={"Tweet"} />
-            <NavButton name={"My Tweets"} navigationRoute={"TweetDetail"} />
+            <NavButton name={"My Tweets"} navigationRoute={"TweetActivity"} />
         </SafeAreaView>
     );
 };

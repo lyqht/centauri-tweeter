@@ -28,7 +28,6 @@ const NavButton: React.FC<NavButtonProps> = ({ name, navigationRoute }) => {
 
 interface Styles {
     button: ViewStyle;
-
 }
 
 const styles = StyleSheet.create<Styles>({

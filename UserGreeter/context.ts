@@ -1,8 +1,13 @@
 import { createContext } from "react";
 
+export interface Tweet {
+    id: string;
+    content: string;
+}
+
 export interface TweetContext {
-    tweets: string[],
-    setCurrTweets: (tweets: string[]) => void;
+    tweets: Tweet[],
+    setCurrTweets: (tweets: Tweet[]) => void;
 }
 
 const defaultContext: TweetContext = {

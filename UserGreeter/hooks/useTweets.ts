@@ -1,10 +1,10 @@
 import { useCallback, useState } from "react";
-import { TweetContext } from "../context";
+import { Tweet, TweetContext } from "../context";
 
 export const useTweets = (): TweetContext => {
-    const [tweets, setTweets] = useState<string[]>([]);
+    const [tweets, setTweets] = useState<Tweet[]>([]);
 
-    const setCurrTweets = useCallback((currTweets: string[]) => {
+    const setCurrTweets = useCallback((currTweets: Tweet[]) => {
         setTweets(currTweets);
     }, []);
 

@@ -2,18 +2,27 @@ import React, { useContext, useState } from "react";
 import { Button, SafeAreaView, StyleSheet } from "react-native";
 import Textbox from "../components/Textbox";
 import { useNavigation } from "@react-navigation/native";
-import TweeterContext from "../context";
+import TweeterContext, { Tweet } from "../context";
 import { useAsyncStorage } from "@react-native-async-storage/async-storage";
+import { v4 as uuidv4 } from "uuid";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../routes";
+
+type TweetScreenProps = NativeStackScreenProps<RootStackParamList, "TweetActivity">;
 
 const TweetScreen: React.FC = () => {
-    const navigation = useNavigation();
+    const navigation = useNavigation<TweetScreenProps["navigation"]>();
+    const newTweetId = uuidv4();
     const [text, onChangeText] = useState("");
     const { tweets, setCurrTweets } = useContext(TweeterContext);
     const { setItem } = useAsyncStorage("tweets");
 
-
     const saveTweet = async () => {
-        const newTweetState = [ ...tweets, text ];
+        const newTweet: Tweet = {
+            content: text,
+            id: newTweetId,
+        };
+        const newTweetState = [...tweets, newTweet ];
         await setItem(JSON.stringify(newTweetState));
         setCurrTweets(newTweetState);
         onChangeText("");
@@ -26,7 +35,7 @@ const TweetScreen: React.FC = () => {
             <Textbox {...textboxProps} />
             <Button title="Tweet this" onPress={() => {
                 saveTweet();
-                navigation.navigate("TweetDetail");
+                navigation.navigate("TweetActivity");
             }} />
         </SafeAreaView>
     );
