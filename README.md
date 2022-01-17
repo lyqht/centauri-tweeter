@@ -1,4 +1,12 @@
 This repository contains assignment work for [Centauri React Native Cohort by Real Dev Squad](https://github.com/Real-Dev-Squad/Centauri-React-Native-Cohort).
+- [Exercise 1: Characters Remaining](#exercise-1-characters-remaining)
+  - [Task](#task)
+  - [Demo](#demo)
+  - [Lessons Learnt](#lessons-learnt)
+- [Exercise 2: Navigation](#exercise-2-navigation)
+  - [Task](#task-1)
+  - [Demo](#demo-1)
+  - [Lessons Learnt](#lessons-learnt-1)
 
 ---
 
