@@ -4,6 +4,7 @@ import Textbox from "../components/Textbox";
 import { useNavigation } from "@react-navigation/native";
 import TweeterContext, { Tweet } from "../context";
 import { useAsyncStorage } from "@react-native-async-storage/async-storage";
+import "react-native-get-random-values";
 import { v4 as uuidv4 } from "uuid";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../routes";
