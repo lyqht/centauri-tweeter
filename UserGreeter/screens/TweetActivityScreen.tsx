@@ -1,22 +1,16 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { useContext } from "react";
-import { FlatList, SafeAreaView, StyleSheet, Text, View, ViewStyle } from "react-native";
+import { FlatList, SafeAreaView, StyleSheet, Text, ViewStyle } from "react-native";
+import TweetDetailRow from "../components/TweetDetailRow";
 import Context, { Tweet } from "../context";
 import { RootStackParamList } from "../routes";
-
-type TweetDetailProps = Pick<Tweet, "content">
-const TweetDetail: React.FC<TweetDetailProps> = ({content}) => (
-    <View style={styles.tweetContainer}>
-        <Text>{content}</Text>
-    </View>
-);
 
 type TweetActivityScreenProps = NativeStackScreenProps<RootStackParamList, "TweetDetail">;
 
 const TweetActivityScreen: React.FC<TweetActivityScreenProps> = () => {
     const { tweets } = useContext(Context);
 
-    const _renderListItem = ({ item }: {item: Tweet}) => (<TweetDetail key={item.id} content={item.content} />);
+    const _renderListItem = ({ item }: { item: Tweet }) => (<TweetDetailRow key={item.id} content={item.content} />);
 
     return (
         <SafeAreaView style={styles.container}>
