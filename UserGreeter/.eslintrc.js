@@ -9,5 +9,6 @@ module.exports = {
         quotes: ["error", "double"],
         "@typescript-eslint/indent": ["error", 4],
         "prettier/prettier": 0,
+        "react-hooks/exhaustive-deps": "warn",
     },
 };
