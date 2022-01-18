@@ -1,4 +1,6 @@
 This repository contains assignment work for [Centauri React Native Cohort by Real Dev Squad](https://github.com/Real-Dev-Squad/Centauri-React-Native-Cohort).
+
+Exercises
 - [Exercise 1: Characters Remaining](#exercise-1-characters-remaining)
   - [Task](#task)
   - [Demo](#demo)
@@ -7,6 +9,10 @@ This repository contains assignment work for [Centauri React Native Cohort by Re
   - [Task](#task-1)
   - [Demo](#demo-1)
   - [Lessons Learnt](#lessons-learnt-1)
+- [Exercise 3: Swipeable](#exercise-3-swipeable)
+  - [Task](#task-2)
+  - [Demo](#demo-2)
+  - [Lessons Learnt](#lessons-learnt-2)
 
 ---
 
@@ -47,3 +53,31 @@ Some extra things I tried and learnt about:
 - Local storage using [React Native Async Storage](https://github.com/react-native-async-storage/async-storage). The `useAsyncStorage` hook is really easy to use.
 - [Flipper](https://github.com/facebook/flipper) for debugging and [Flipper Advanced Async Storage Plugin](https://github.com/lbaldy/flipper-plugin-async-storage-advanced) for CRUD actions on local storage.
 - State management using React context still works as intended on React Native.
+
+## Exercise 3: Swipeable
+
+### Task
+
+> Source of instructions can be found [here](https://github.com/Real-Dev-Squad/Centauri-React-Native-Cohort/blob/main/react-native/action-items/2022-01/2022-01-15.md).
+
+Upon rendering a list of emails in an inbox, swipe left to delete an email from the list.
+
+Additional
+How can you add an "Undo" feature?
+
+
+### Demo
+
+https://user-images.githubusercontent.com/35736525/149978363-8b2c1ee8-ee81-45f8-a8aa-4706a5ed11ba.mp4
+
+### Lessons Learnt
+
+- Learnt how to use Native Base library components e.g. Box, Button, Pressable, Toast.
+- The Swipeable component involves having to think about how to render the component that is shown after swiping the list item. 
+- Learnt how to use React Native Gesture Handler Library's Swipeable API.
+
+Ideally, I would want to replicate how Grab does the "undo order" UX with a proper countdown. 
+
+
+
+
