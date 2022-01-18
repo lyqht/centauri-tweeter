@@ -1,17 +1,27 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { FlatList, Text } from "native-base";
 import React, { useContext } from "react";
-import { SafeAreaView, StyleSheet, ViewStyle } from "react-native";
+import { LayoutAnimation, SafeAreaView, StyleSheet, ViewStyle } from "react-native";
 import TweetDetailRow from "../components/TweetDetailRow";
-import Context, { Tweet } from "../context";
+import TweeterContext, { Tweet } from "../context";
 import { RootStackParamList } from "../routes";
 
 type TweetActivityScreenProps = NativeStackScreenProps<RootStackParamList, "TweetDetail">;
 
 const TweetActivityScreen: React.FC<TweetActivityScreenProps> = () => {
-    const { tweets } = useContext(Context);
+    const { tweets, setCurrTweets } = useContext(TweeterContext);
 
-    const _renderListItem = ({ item }: { item: Tweet }) => (<TweetDetailRow key={item.id} content={item.content} />);
+    const deleteItem = (id: string) => {
+        const itemToDelete = tweets.findIndex(x => x.id === id);
+        const updatedList = [...tweets];
+        updatedList.splice(itemToDelete, 1);
+        setCurrTweets(updatedList);
+        LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
+    };
+
+    const _renderListItem = ({ item }: { item: Tweet }) => (
+        <TweetDetailRow onSwipe={() => { deleteItem(item.id); }} key={item.id} content={item.content} />
+    );
 
     return (
         <SafeAreaView style={styles.container}>
@@ -35,7 +45,7 @@ const styles = StyleSheet.create<Styles>({
         alignContent: "center",
         backgroundColor: "#ecf0f1",
         padding: 12,
-        marginVertical: 12,
+        margin: 12,
     },
 });
 

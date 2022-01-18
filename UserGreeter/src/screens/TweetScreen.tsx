@@ -12,7 +12,7 @@ import TweeterContext, { Tweet } from "../context";
 import { RootStackParamList } from "../routes";
 
 type TweetScreenProps = NativeStackScreenProps<RootStackParamList, "TweetActivity">;
-const maxCharLimit = 50;
+const maxCharLimit = 280;
 
 const TweetScreen: React.FC = () => {
     const navigation = useNavigation<TweetScreenProps["navigation"]>();
