@@ -20,9 +20,8 @@ const styles = StyleSheet.create<Styles>({
         flex: 1,
         flexDirection: "column",
         justifyContent: "space-evenly",
-        alignContent: "center",
+        alignItems: "center",
         backgroundColor: "#ecf0f1",
-        padding: 8,
     },
 });
 

@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
+import { Center, Pressable, useTheme } from "native-base";
 import React from "react";
-import { ViewStyle, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { RootStackParamList } from "../routes";
 
 type NavButtonProps = {
@@ -10,35 +10,26 @@ type NavButtonProps = {
 
 const NavButton: React.FC<NavButtonProps> = ({ name, navigationRoute }) => {
     const navigation = useNavigation();
+    const { colors } = useTheme();
 
     return (
-        <TouchableOpacity
-            style={styles.button}
-            onPress={() => {
-                navigation.navigate(navigationRoute);
-            }}
-        >
-            <Text>
-                {name}
-            </Text>
-        </TouchableOpacity>
+        <Pressable onPress={() => { navigation.navigate(navigationRoute);}}>
+            {({ isPressed }) => {
+                return (
+                    <Center
+                        bg={isPressed ? colors.darkBlue[900] : colors.darkBlue[700]}
+                        shadow={isPressed ? "2" : "4"}
+                        p="5"
+                        m="2"
+                        w={"80"}
+                        rounded="8"
+                    >
+
+                        {name}
+                    </Center>
+                );
+            }}</Pressable>
     );
 };
-
-
-interface Styles {
-    button: ViewStyle;
-}
-
-const styles = StyleSheet.create<Styles>({
-    button: {
-        alignItems: "center",
-        justifyContent: "center",
-        backgroundColor: "#DDDDDD",
-        width: "80%",
-        padding: 16,
-        borderRadius: 8,
-    },
-});
 
 export default NavButton;

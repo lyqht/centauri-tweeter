@@ -1,9 +1,10 @@
+import faker from "@faker-js/faker";
 import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import faker from "@faker-js/faker";
+import { Button, Center, HStack } from "native-base";
 import React, { useContext, useState } from "react";
-import { Button, SafeAreaView, StyleSheet } from "react-native";
+import { SafeAreaView, StyleSheet } from "react-native";
 import "react-native-get-random-values";
 import { v4 as uuidv4 } from "uuid";
 import Textbox from "../components/Textbox";
@@ -11,7 +12,7 @@ import TweeterContext, { Tweet } from "../context";
 import { RootStackParamList } from "../routes";
 
 type TweetScreenProps = NativeStackScreenProps<RootStackParamList, "TweetActivity">;
-const maxCharLimit = 280;
+const maxCharLimit = 50;
 
 const TweetScreen: React.FC = () => {
     const navigation = useNavigation<TweetScreenProps["navigation"]>();
@@ -36,17 +37,30 @@ const TweetScreen: React.FC = () => {
     return (
         <SafeAreaView style={styles.container}>
             <Textbox {...textboxProps} />
-            <Button title="Generate Random Text" onPress={() => {
-                let newText = faker.hacker.phrase();
-                onChangeText(newText);
-            }} />
-            <Button title="Clear Text" onPress={() => {
-                onChangeText("");
-            }} />
-            <Button title="Tweet this" onPress={() => {
-                saveTweet();
-                navigation.navigate("TweetActivity");
-            }} />
+            <Center>
+                <HStack space={3} w={80}>
+                    <Button flex={2} marginY={2} colorScheme="secondary" onPress={() => {
+                        let newText = faker.hacker.phrase();
+                        onChangeText(newText);
+                    }}>
+                Generate Random Text
+                    </Button>
+
+                    <Button flex={1} marginY={2}
+                        colorScheme="danger" variant={"outline"} isDisabled={text.length === 0}
+                        onPress={() => {
+                            onChangeText("");
+                        }}>
+                Clear Text
+                    </Button>
+                </HStack>
+                <Button w={"80"} m={2} isDisabled={text.length === 0} onPress={() => {
+                    saveTweet();
+                    navigation.navigate("TweetActivity");
+                }}>
+                Tweet this
+                </Button>
+            </Center>
         </SafeAreaView>
     );
 };

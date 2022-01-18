@@ -1,6 +1,7 @@
 import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { NativeBaseProvider } from "native-base";
 import React, { useEffect } from "react";
 import FlipperAsyncStorage from "rn-flipper-async-storage-advanced";
 import TweeterContext from "./context";
@@ -42,12 +43,14 @@ const App: React.FC = () => {
     }, []);
 
     return (
-        <TweeterContext.Provider value={tweets}>
-            <FlipperAsyncStorage />
-            <NavigationContainer>
-                <NavStack />
-            </NavigationContainer>
-        </TweeterContext.Provider>
+        <NativeBaseProvider>
+            <TweeterContext.Provider value={tweets}>
+                <FlipperAsyncStorage />
+                <NavigationContainer>
+                    <NavStack />
+                </NavigationContainer>
+            </TweeterContext.Provider>
+        </NativeBaseProvider>
     );
 };
 

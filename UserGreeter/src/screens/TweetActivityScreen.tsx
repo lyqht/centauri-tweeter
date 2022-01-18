@@ -1,6 +1,7 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { FlatList, Text } from "native-base";
 import React, { useContext } from "react";
-import { FlatList, SafeAreaView, StyleSheet, Text, ViewStyle } from "react-native";
+import { SafeAreaView, StyleSheet, ViewStyle } from "react-native";
 import TweetDetailRow from "../components/TweetDetailRow";
 import Context, { Tweet } from "../context";
 import { RootStackParamList } from "../routes";
@@ -25,7 +26,6 @@ const TweetActivityScreen: React.FC<TweetActivityScreenProps> = () => {
 
 interface Styles {
     container: ViewStyle;
-    tweetContainer: ViewStyle;
 }
 
 const styles = StyleSheet.create<Styles>({
@@ -34,17 +34,8 @@ const styles = StyleSheet.create<Styles>({
         flexDirection: "column",
         alignContent: "center",
         backgroundColor: "#ecf0f1",
-        padding: 24,
-        margin: 16,
-    },
-    tweetContainer: {
-        padding: 24,
-        paddingTop: 24,
-        textAlignVertical: "top",
-        borderWidth: 1,
-        borderColor: "gray",
-        borderRadius: 24,
-        margin: 16,
+        padding: 12,
+        marginVertical: 12,
     },
 });
 

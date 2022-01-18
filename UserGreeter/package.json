@@ -17,6 +17,7 @@
     "@react-navigation/native-stack": "^6.2.5",
     "@types/faker": "^5.5.9",
     "@types/uuid": "^8.3.4",
+    "native-base": "^3.3.2",
     "react": "17.0.2",
     "react-native": "0.66.4",
     "react-native-flipper": "^0.128.2",
@@ -24,6 +25,7 @@
     "react-native-get-random-values": "^1.7.2",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.10.1",
+    "react-native-svg": "^12.1.1",
     "rn-flipper-async-storage-advanced": "^1.0.4",
     "uuid": "^8.3.2"
   },

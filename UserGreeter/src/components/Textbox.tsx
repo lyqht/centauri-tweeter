@@ -1,5 +1,6 @@
+import { Text } from "native-base";
 import * as React from "react";
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import { StyleSheet, TextInput, View } from "react-native";
 
 type TextboxProps = {
     text: string;
@@ -50,7 +51,7 @@ const Textbox: React.FC<TextboxProps> = ({text, onChangeText, maxCharLimit}) => 
 
 const colors = {
     border: {
-        default: "black",
+        default: "rgba(0,0,0,0.6)",
         warning: "#c4b56d",
         error: "red",
     },
@@ -66,7 +67,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         padding: 24,
-        margin: 24,
+        margin: 12,
         marginTop: 0,
         fontSize: 14,
         height: "50%",
@@ -77,7 +78,7 @@ const styles = StyleSheet.create({
         textAlignVertical: "top",
         borderWidth: 1,
         borderColor: "gray",
-        borderRadius: 24,
+        borderRadius: 8,
         height: "100%",
         width: "100%",
     },
