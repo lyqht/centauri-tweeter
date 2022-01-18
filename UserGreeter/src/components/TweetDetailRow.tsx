@@ -1,5 +1,6 @@
+import { Box, Text } from "native-base";
 import React from "react";
-import { Animated, StyleSheet, Text, View, ViewStyle } from "react-native";
+import { Animated, StyleSheet,  View, ViewStyle } from "react-native";
 import { Swipeable } from "react-native-gesture-handler";
 import { Tweet } from "../context";
 
@@ -11,31 +12,34 @@ const TweetDetailRow: React.FC<Props> = ({ content, onSwipe }) => (
         renderRightActions={rightSwipeActions}
         onSwipeableRightOpen={onSwipe}
     >
-        <View style={styles.container}>
+        <Box marginY={4} bg={"white"} style={styles.container}>
             <Text>{content}</Text>
-        </View>
+        </Box>
     </Swipeable>
 );
 
 const rightSwipeActions = (progressAnimatedValue: Animated.AnimatedInterpolation, dragAnimatedValue: Animated.AnimatedInterpolation) => {
     return (
-        <View
-            style={[styles.swipeActionRight, {
-                transform: [{ translateX: -20 }],
-            }]}
+        <Box
+            bg={"red.600"}
+            justifyContent={"center"}
+            alignItems={"flex-end"}
+            marginY={4}
+            width={"full"}
+            p={4}
         >
             <Text
+                color={"white"}
             >
                 Delete
             </Text>
-        </View>
+        </Box>
     );
 };
 
 interface Styles {
     container: ViewStyle;
-    swipeActionLeft: ViewStyle;
-    swipeActionRight: ViewStyle;
+    actionRightContainer: ViewStyle;
 }
 
 const styles = StyleSheet.create<Styles>({
@@ -45,13 +49,9 @@ const styles = StyleSheet.create<Styles>({
         textAlignVertical: "top",
         borderWidth: 1,
         borderColor: "gray",
-        borderRadius: 24,
-        margin: 16,
+        borderRadius: 8,
     },
-    swipeActionLeft: {
-        justifyContent: "center",
-    },
-    swipeActionRight: {
+    actionRightContainer: {
         justifyContent: "center",
         alignItems: "flex-end",
     },

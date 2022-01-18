@@ -1,22 +1,61 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { FlatList, Text } from "native-base";
-import React, { useContext } from "react";
+import { Box, Button, FlatList, Text, useToast } from "native-base";
+import { default as React, useContext, useEffect, useState } from "react";
 import { LayoutAnimation, SafeAreaView, StyleSheet, ViewStyle } from "react-native";
 import TweetDetailRow from "../components/TweetDetailRow";
 import TweeterContext, { Tweet } from "../context";
 import { RootStackParamList } from "../routes";
 
 type TweetActivityScreenProps = NativeStackScreenProps<RootStackParamList, "TweetDetail">;
+type TempRemovedTweet = Tweet & { index: number };
 
 const TweetActivityScreen: React.FC<TweetActivityScreenProps> = () => {
     const { tweets, setCurrTweets } = useContext(TweeterContext);
+    const [tempRemovedTweet, setTempRemovedTweet] = useState<TempRemovedTweet | null>(null);
+    const toast = useToast();
+
+    useEffect(() => {
+        if (tempRemovedTweet != null) {
+            toast.show({
+                render: () => {
+                    return (
+                        <Box p="4" rounded="sm" mb={5}>
+                            <Text>
+                                Deleting tweet permanently...
+                            </Text>
+                            <Button colorScheme="warning" onPress={revertDelete}>
+                                Cancel
+                            </Button>
+                        </Box>
+                    );
+                },
+            });
+        }
+    }, [tempRemovedTweet]);
+
+    const revertDelete = () => {
+        if (tempRemovedTweet != null) {
+            const updatedList = [...tweets];
+            const { index, id, content } = tempRemovedTweet;
+            const oldTweet = { id, content };
+            updatedList.splice(index, 0, oldTweet);
+            setCurrTweets(updatedList);
+            LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
+            toast.closeAll();
+        }
+    };
 
     const deleteItem = (id: string) => {
-        const itemToDelete = tweets.findIndex(x => x.id === id);
+        const itemToDeleteIndex = tweets.findIndex(x => x.id === id);
+        const itemToDelete = tweets[itemToDeleteIndex];
         const updatedList = [...tweets];
-        updatedList.splice(itemToDelete, 1);
-        setCurrTweets(updatedList);
+        updatedList.splice(itemToDeleteIndex, 1);
         LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
+        setCurrTweets(updatedList);
+        setTempRemovedTweet({
+            ...itemToDelete,
+            index: itemToDeleteIndex,
+        });
     };
 
     const _renderListItem = ({ item }: { item: Tweet }) => (
