@@ -54,7 +54,7 @@ const TweetScreen: React.FC = () => {
                 Clear Text
                     </Button>
                 </HStack>
-                <Button w={"80"} m={2} isDisabled={text.length === 0} onPress={() => {
+                <Button w={"80"} m={2} isDisabled={text.length === 0 || text.length > maxCharLimit} onPress={() => {
                     saveTweet();
                     navigation.navigate("TweetActivity");
                 }}>
