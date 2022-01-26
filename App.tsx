@@ -3,14 +3,13 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NativeBaseProvider } from "native-base";
 import React, { useEffect } from "react";
-import FlipperAsyncStorage from "rn-flipper-async-storage-advanced";
-import TweeterContext from "./context";
-import { useTweets } from "./hooks/useTweets";
-import { RootStackParamList } from "./routes";
-import HomeScreen from "./screens/HomeScreen";
-import TweetActivityScreen from "./screens/TweetActivityScreen";
-import TweetDetailScreen from "./screens/TweetDetailScreen";
-import TweetScreen from "./screens/TweetScreen";
+import TweeterContext from "./src/context";
+import { useTweets } from "./src/hooks/useTweets";
+import { RootStackParamList } from "./src/routes";
+import HomeScreen from "./src/screens/HomeScreen";
+import TweetActivityScreen from "./src/screens/TweetActivityScreen";
+import TweetDetailScreen from "./src/screens/TweetDetailScreen";
+import TweetScreen from "./src/screens/TweetScreen";
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 
@@ -45,7 +44,6 @@ const App: React.FC = () => {
     return (
         <NativeBaseProvider>
             <TweeterContext.Provider value={tweets}>
-                <FlipperAsyncStorage />
                 <NavigationContainer>
                     <NavStack />
                 </NavigationContainer>
